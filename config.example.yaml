@@ -1,0 +1,14 @@
+server:
+  addr: ":8090"
+  read_timeout: 5s
+  write_timeout: 10s
+  idle_timeout: 60s
+
+routes:
+  - route: "/api/v1/orders"
+    methods: ["GET"]
+    upstream: "http://localhost:8080"
+    limit:
+      rps: 1
+      window: 1s
+
